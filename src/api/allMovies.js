@@ -5,3 +5,7 @@ export const getTrending = async () => {
     return data
 }
 
+export const getMovie = async (id) => {
+    const { data } = await api(`/movie/${id}?api_key=2e39566998eaefb55fd8d83f773b6784&language=en-US`)
+    return data
+}

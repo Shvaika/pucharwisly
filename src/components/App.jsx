@@ -12,9 +12,9 @@ import MovieDetails from "pages/MovieDetails";
        <Route path='/' element={<Layout />} >
          <Route index element={<Home/>}/>
          <Route path='/movies' element={<Movies />} >
-           <Route path='/movies/:movieId' element={<MovieDetails/>} />
+        
          </Route>
-         
+            <Route path='/movies/:movieId' element={<MovieDetails/>} />
          <Route path='/movies/:movieId/cast' element={<></>} />
         <Route path='/movies/:movieId/reviews' element={<></>} />
        </Route>
