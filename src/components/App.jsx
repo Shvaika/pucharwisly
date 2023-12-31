@@ -1,9 +1,11 @@
 import { Route, Routes } from "react-router-dom";
-import React from "react";
+import React, { Suspense, lazy } from "react";
 import Layout from "pages/layout/Layout";
 import Home from "pages/Home";
 import Movies from "pages/Movies";
-import MovieDetails from "pages/MovieDetails";
+// import MovieDetails from "pages/MovieDetails";
+
+const MovieDetails = lazy(() => import('pages/MovieDetails'))
 
  const App = () => {
    return (<>
@@ -14,7 +16,9 @@ import MovieDetails from "pages/MovieDetails";
          <Route path='/movies' element={<Movies />} >
         
          </Route>
-            <Route path='/movies/:movieId' element={<MovieDetails/>} />
+         <Route path='/movies/:movieId' element={
+           <Suspense><MovieDetails /></Suspense>
+           } />
          <Route path='/movies/:movieId/cast' element={<></>} />
         <Route path='/movies/:movieId/reviews' element={<></>} />
        </Route>

@@ -1,22 +1,26 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
+import { useSearchParams } from "react-router-dom"
 
 
 
-export const SearchMovie = ({onSubmit, children}) => {
+export const SearchMovie = () => {
   const [query, setQuery] = useState('')
+  const [searchParams, setSearchParams] = useSearchParams()
 
   const handleChange = (elem) => {
     setQuery(elem.target.value)
-   
   }
 
   const handleSubmit = (elem) => {
     elem.preventDefault();
+    setSearchParams({search: query})
   
     if (!query.trim()) return alert("Can not be empty")
-    onSubmit(query)
     setQuery('')
   }
+  useEffect(() => {
+   !query && setQuery(searchParams.get('search')) 
+  }, [searchParams])
 
     return (
      
