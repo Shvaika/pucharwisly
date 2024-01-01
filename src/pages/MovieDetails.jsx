@@ -60,7 +60,7 @@ const MovieDetails = () => {
                         <h2>Overview</h2>
                         <p>{overview}</p>
                         <h3>Genres</h3>
-                        <p>{genres.map((el) => <span>{el.name} </span>)}</p>
+                        <p>{genres.map((el) => <span key={el.id}>{el.name} </span>)}</p>
                     </div>
                 </div>
                 

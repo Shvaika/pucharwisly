@@ -29,22 +29,18 @@ const Cast = () => {
     }, [getCast])
     
     return (
-        
-            <div>
-               
-                
+        <div>
             <ul>
-                {cast.map(({ name, profile_path }) =>
-                    <li>
-                <img src={ profile_path ?`https://image.tmdb.org/t/p/w500/${profile_path}` : defaultImg}
-        width={100}
-                alt="poster" />
-                    {name}
-                </li>)}
+                {cast.map(({ name, profile_path, id }) =>
+                    <li key={id}>
+                        <img src={profile_path ? `https://image.tmdb.org/t/p/w500/${profile_path}` : defaultImg}
+                            width={100}
+                            alt="poster" />
+                        {name}
+                    </li>)}
                     
             </ul>
-               
-            </div>
+        </div>
         
     )
 }

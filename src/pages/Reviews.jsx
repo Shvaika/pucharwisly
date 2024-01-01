@@ -12,7 +12,6 @@ const [reviews, setReviews] = useState([])
         try {
             const response = await getReviews(id) 
              setReviews(response.results)
-            console.log(response)
         }catch (error) {
       console.log(error)
      
@@ -28,11 +27,11 @@ const [reviews, setReviews] = useState([])
     return (
         <>
             <ul>
-                {reviews.length>0 ? reviews.map(({ author, content }) => <li><h3>{author}</h3>
+                {reviews.length>0 ? reviews.map(({ author, content, id }) => <li key={id}><h3>{author}</h3>
                     {content}</li>) : 'We don\'t have any reviews for this movie'}
             </ul>
         </>
-    );
+    )
 }
 export default Reviews
 
