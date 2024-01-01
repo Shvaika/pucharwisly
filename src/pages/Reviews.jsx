@@ -22,7 +22,7 @@ const [reviews, setReviews] = useState([])
 
     useEffect(() => {
      getReviewsMovie(movieId)
-    }, [getReviewsMovie])
+    }, [getReviewsMovie, movieId])
     
     return (
         <>
