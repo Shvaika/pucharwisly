@@ -1,13 +1,13 @@
 import { useParams } from "react-router-dom"
+import React, { useCallback, useEffect, useState } from "react"
+import { getReviews } from "api/allMovies"
 
-const { getReviews } = require("api/allMovies")
-const { useCallback, useEffect, useState } = require("react")
 
 
 const Reviews = () => {
 const [reviews, setReviews] = useState([])
 
-    const {movieId} = useParams()
+    const { movieId } = useParams()
     const getReviewsMovie = useCallback(async (id) => {
         try {
             const response = await getReviews(id) 
