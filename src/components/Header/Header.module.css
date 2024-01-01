@@ -1,0 +1,5 @@
+.headerPage {
+  display: flex;
+  gap: 15px;
+  list-style: none;
+}

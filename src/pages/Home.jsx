@@ -21,8 +21,6 @@ const location = useLocation()
     }
   }, [])
 
-
-
   useEffect(() => {
       getMovies()
   }, [getMovies])

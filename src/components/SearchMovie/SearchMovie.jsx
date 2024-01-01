@@ -18,6 +18,7 @@ export const SearchMovie = () => {
     if (!query.trim()) return alert("Can not be empty")
     setQuery('')
   }
+  
   useEffect(() => {
    !query && setQuery(searchParams.get('search')) 
   }, [searchParams])

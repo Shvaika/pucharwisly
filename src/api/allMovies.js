@@ -14,3 +14,14 @@ export const getSearchMovie = async (query) => {
     const { data } = await api(`/search/movie?api_key=2e39566998eaefb55fd8d83f773b6784&query=${query}&include_adult=false&language=en-US&page=1`)
     return data
 }
+
+export const getCastMovie = async (id) => {
+    const { data } = await api(`movie/${id}/credits?language=en-US&api_key=2e39566998eaefb55fd8d83f773b6784`)
+    return data
+}
+
+export const getReviews = async (id) => {
+    const { data } = await api(`/movie/${id}/reviews?language=en-US&page=1&api_key=2e39566998eaefb55fd8d83f773b6784`)
+    return data
+}
+
