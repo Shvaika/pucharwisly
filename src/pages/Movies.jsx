@@ -13,7 +13,6 @@ const Movies = () => {
     try {
       const { results } = await getSearchMovie(query)
   setMovies(results)
-      console.log(results)
       
     } catch (error) {
       console.log(error)

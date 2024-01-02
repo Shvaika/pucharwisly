@@ -38,10 +38,10 @@ const MovieDetails = () => {
     
     useEffect(() => {
         movieId&& getDetails(movieId)
-    }, [movieId])
+    }, [movieId, getDetails])//+getDetails
 
     const handleBack = () => {
-    navigate(location.state ?? '/')
+        navigate(location.state ?? '/')
     }
 
     return (
@@ -71,8 +71,7 @@ const MovieDetails = () => {
                 <br />
                 <Outlet />
               
-            </div>
-            
+            </div>  
         </>
     )
 }
