@@ -5,8 +5,7 @@ import { useSearchParams } from "react-router-dom"
 
 export const SearchMovie = () => {
     const [searchParams, setSearchParams] = useSearchParams()
-  const [query, setQuery] = useState(searchParams.get('search') || '')
-
+    const [query, setQuery] = useState(searchParams.get('search') || '')
 
   const handleChange = (elem) => {
     setQuery(elem.target.value)
@@ -20,9 +19,6 @@ export const SearchMovie = () => {
     setQuery('')
   }
   
-  // useEffect(() => {
-  //  !query && setQuery(searchParams.get('search')) 
-  // }, [searchParams])
 
     return (
      

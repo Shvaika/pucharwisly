@@ -26,7 +26,7 @@ const Cast = () => {
 
     useEffect(() => {
       getCast(movieId)
-    }, [getCast, movieId])//+movieId
+    }, [getCast, movieId])
     
     return (
         <div>

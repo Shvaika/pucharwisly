@@ -38,7 +38,7 @@ const MovieDetails = () => {
     
     useEffect(() => {
         movieId&& getDetails(movieId)
-    }, [movieId, getDetails])//+getDetails
+    }, [movieId, getDetails])
 
     const handleBack = () => {
         navigate(location.state ?? '/')

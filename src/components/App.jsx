@@ -17,7 +17,7 @@ const MovieDetails = lazy(() => import('pages/MovieDetails'))
          <Route path='/movies' element={<Movies />} />
       
          <Route path='/movies/:movieId' element={
-           <Suspense><MovieDetails /></Suspense>
+           <Suspense allback={<div>Loading...</div>}><MovieDetails /></Suspense>
          } >
            <Route path='/movies/:movieId/cast' element={<Cast />} />
          
