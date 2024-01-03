@@ -1,66 +1,78 @@
 import { getMovieDetails } from "api/allMovies";
-import React, { useCallback, useEffect, useState } from "react";
-import { Link, Outlet, useLocation, useNavigate, useParams } from "react-router-dom";
+import React, { useCallback, useEffect, useRef, useState } from "react";
+import { Link, Outlet, useLocation, useParams } from "react-router-dom";
 import css from './MovieDetails.module.css'
 
 
 
 const MovieDetails = () => {
-    const [posterPath, setPosterPath] = useState('')
-    const [originalTitle, setOriginalTitle] = useState('')
-    const [voteAverage, setVoteAverage] = useState('')
-    const [overview, setOverview] = useState('')
-    const [genres, setGeneres] = useState([])
+    
+    
+   
+
+
+    const [moviesInfo, setMoviesInfo] = useState(null)
+
+    const [isLoading, setIsLoading] = useState(false)
+    const [error, setError] = useState(null)
     
     const { movieId } = useParams()
 
-    const location = useLocation()
-    const navigate = useNavigate()
+    
+   
 
     const defaultImg = 'https://ireland.apollo.olxcdn.com/v1/files/0iq0gb9ppip8-UA/image;s=1000x700'
 
     const getDetails = useCallback(async (id) => {
         try {
             const response = await getMovieDetails(id)
-            setPosterPath(response.poster_path)
-            setOriginalTitle(response.original_title)
-            setVoteAverage(Math.round(response.vote_average*10))
-            setOverview(response.overview)
-            setGeneres(response.genres)
+            setMoviesInfo(response)
+           
+         
+          
 
         } catch (error) {
-            console.log(error)
+            setError(error)
      
         } finally {
-    
+            setIsLoading(false)
         }
     }, [])
     
     useEffect(() => {
-        movieId&& getDetails(movieId)
+        movieId && getDetails(movieId)
     }, [movieId, getDetails])
 
-    const handleBack = () => {
-        navigate(location.state ?? '/')
-    }
+   
+
+
+    const location = useLocation();
+    const backLink = useRef(location.state?.from ?? '/');
+
 
     return (
         <>
-            <div>
-                <button onClick={handleBack}>go back</button>
+            {isLoading && <p>Loading...</p>}
+            {error && <p>Something went wrong...</p>}
+            {moviesInfo && <div>
+            
+                <Link to={backLink.current}>
+                    <button >go back</button>
+                </Link>
 
                 <div className={css.movieDetails}>
-                    <img src={posterPath ? `https://image.tmdb.org/t/p/w500/${posterPath}` : defaultImg}
+                    <img src={moviesInfo.poster_path ? `https://image.tmdb.org/t/p/w500/${moviesInfo.poster_path}` : defaultImg}
                         width={250}
                         alt="poster"
-                    /><div>
+                    />
+                    <div>
             
-                        <h1>{originalTitle}</h1>
-                        <p>User Score: {voteAverage}%</p>
+                        <h1>{moviesInfo.original_title}</h1>
+                        <p>User Score: {Math.round(moviesInfo.vote_average * 10)}%</p>
                         <h2>Overview</h2>
-                        <p>{overview}</p>
+                        <p>{moviesInfo.overview}</p>
                         <h3>Genres</h3>
-                        <p>{genres.map((el) => <span key={el.id}>{el.name} </span>)}</p>
+                        <p>{moviesInfo.genres.map((el) => <span key={el.id}>{el.name} </span>)}</p>
                     </div>
                 </div>
                 
@@ -71,7 +83,8 @@ const MovieDetails = () => {
                 <br />
                 <Outlet />
               
-            </div>  
+            </div>}
+      
         </>
     )
 }

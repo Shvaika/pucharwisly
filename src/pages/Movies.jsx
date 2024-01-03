@@ -1,11 +1,15 @@
 import { getSearchMovie } from "api/allMovies"
+import MoviesList from "components/MoviesList/MovieList"
 import { SearchMovie } from "components/SearchMovie/SearchMovie"
 import React, { useCallback, useEffect, useState } from "react"
-import { Link, useLocation, useSearchParams } from "react-router-dom"
+import { useLocation, useSearchParams } from "react-router-dom"
 
 
 const Movies = () => {
   const [movies, setMovies] = useState([])
+  const [isLoading, setIsLoading] = useState(false)
+  const [error, setError] = useState(null)
+
   const [searchParams] = useSearchParams()
   const location = useLocation()
   
@@ -15,10 +19,10 @@ const Movies = () => {
   setMovies(results)
       
     } catch (error) {
-      console.log(error)
+      setError(error)
      
     } finally {
-    
+    setIsLoading(false)
     }
   }, [])
 
@@ -29,11 +33,12 @@ const Movies = () => {
   
 
     return (
-        <>
+      <>
+          {isLoading && <p>Loading...</p>}
+        {error && <p>Something went wrong...</p>}
         <SearchMovie/>
-        <ul>
-          {movies.map(el => <li key={el.id}><Link to={'/movies/' + el.id} state={location}>{el.title}</Link></li>)}
-        </ul>
+      
+        {movies.length > 0 && <MoviesList movies= {movies} location={location}/>}
         </>
     )
 }

@@ -5,7 +5,9 @@ import { getReviews } from "api/allMovies"
 
 
 const Reviews = () => {
-const [reviews, setReviews] = useState([])
+    const [reviews, setReviews] = useState([])
+    const [isLoading, setIsLoading] = useState(false)
+    const [error, setError] = useState(null)
 
     const { movieId } = useParams()
     const getReviewsMovie = useCallback(async (id) => {
@@ -13,10 +15,10 @@ const [reviews, setReviews] = useState([])
             const response = await getReviews(id) 
              setReviews(response.results)
         }catch (error) {
-      console.log(error)
+      setError(error)
      
     } finally {
-    
+    setIsLoading(false)
     }
     }, [])
 
@@ -26,6 +28,8 @@ const [reviews, setReviews] = useState([])
     
     return (
         <>
+        {isLoading && <p>Loading...</p>}
+        {error && <p>Something went wrong...</p>}
             <ul>
                 {reviews.length>0 ? reviews.map(({ author, content, id }) => <li key={id}><h3>{author}</h3>
                     {content}</li>) : 'We don\'t have any reviews for this movie'}

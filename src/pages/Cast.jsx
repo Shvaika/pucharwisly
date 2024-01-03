@@ -6,6 +6,8 @@ import { useParams } from "react-router-dom"
 
 const Cast = () => {
     const [cast, setCast] = useState([])
+    const [isLoading, setIsLoading] = useState(false)
+    const [error, setError] = useState(null)
 
     const { movieId } = useParams()
     
@@ -17,10 +19,10 @@ const Cast = () => {
      
         setCast(response.cast)
     } catch (error) {
-      console.log(error)
+      setError(error)
      
     } finally {
-    
+     setIsLoading(false)
     }
     }, [])
 
@@ -29,6 +31,9 @@ const Cast = () => {
     }, [getCast, movieId])
     
     return (
+        <>
+         {isLoading && <p>Loading...</p>}
+        {error && <p>Something went wrong...</p>}
         <div>
             <ul>
                 {cast.map(({ name, profile_path, id }) =>
@@ -41,7 +46,7 @@ const Cast = () => {
                     
             </ul>
         </div>
-        
+       </>  
     )
 }
 export default Cast
