@@ -1,10 +1,5 @@
-import { Route, Routes } from "react-router-dom";
+import { Navigate, Route, Routes } from "react-router-dom";
 import React, { Suspense, lazy } from "react";
-// import Layout from "pages/layout/Layout";
-// import Home from "pages/Home";
-// import Movies from "pages/Movies";
-// import Cast from "pages/Cast";
-// import Reviews from "pages/Reviews";
 const Layout = lazy(() => import("pages/layout/Layout"))
 const Home = lazy(() => import("pages/Home"))
 const Movies = lazy(() => import("pages/Movies"))
@@ -28,8 +23,10 @@ const MovieDetails = lazy(() => import('pages/MovieDetails'))
            <Route path='/movies/:movieId/reviews' element={<Reviews/>} />
          </Route>
    
-       </Route>
-       <Route path='*' element={<>404</>} />
+         </Route>
+         
+             <Route path='*' element={< Navigate to="/" />} />
+
        </Routes>
        </Suspense>
    </>

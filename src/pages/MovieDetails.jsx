@@ -6,32 +6,21 @@ import css from './MovieDetails.module.css'
 
 
 const MovieDetails = () => {
-    
-    
-   
-
-
-    const [moviesInfo, setMoviesInfo] = useState(null)
+     const [moviesInfo, setMoviesInfo] = useState(null)
 
     const [isLoading, setIsLoading] = useState(false)
     const [error, setError] = useState(null)
     
     const { movieId } = useParams()
 
-    
-   
-
-    const defaultImg = 'https://ireland.apollo.olxcdn.com/v1/files/0iq0gb9ppip8-UA/image;s=1000x700'
+     const defaultImg = 'https://ireland.apollo.olxcdn.com/v1/files/0iq0gb9ppip8-UA/image;s=1000x700'
 
     const getDetails = useCallback(async (id) => {
         try {
             const response = await getMovieDetails(id)
             setMoviesInfo(response)
            
-         
-          
-
-        } catch (error) {
+         } catch (error) {
             setError(error)
      
         } finally {
@@ -42,9 +31,6 @@ const MovieDetails = () => {
     useEffect(() => {
         movieId && getDetails(movieId)
     }, [movieId, getDetails])
-
-   
-
 
     const location = useLocation();
     const backLink = useRef(location.state?.from ?? '/');

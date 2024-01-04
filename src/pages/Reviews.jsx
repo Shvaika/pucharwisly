@@ -2,8 +2,6 @@ import { useParams } from "react-router-dom"
 import React, { useCallback, useEffect, useState } from "react"
 import { getReviews } from "api/allMovies"
 
-
-
 const Reviews = () => {
     const [reviews, setReviews] = useState([])
     const [isLoading, setIsLoading] = useState(false)
