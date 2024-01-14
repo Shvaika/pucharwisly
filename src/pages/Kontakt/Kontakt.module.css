@@ -1,0 +1,8 @@
+.main{
+    display: flex;
+}
+
+.article{
+    width: 80%;
+    margin: auto;
+}

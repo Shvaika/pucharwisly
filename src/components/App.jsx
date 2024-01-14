@@ -1,34 +1,42 @@
 import { Navigate, Route, Routes } from "react-router-dom";
 import React, { Suspense, lazy } from "react";
+import NewsDetailsPage from "pages/NewsDetailsPage/NewsDetailsPage";
+
 const Layout = lazy(() => import("pages/layout/Layout"))
-const Home = lazy(() => import("pages/Home"))
-const Movies = lazy(() => import("pages/Movies"))
-const Cast = lazy(() => import("pages/Cast"))
-const Reviews = lazy(() => import("pages/Reviews"))
-const MovieDetails = lazy(() => import('pages/MovieDetails'))
+const Home = lazy(() => import("pages/Home/Home"))
+const Komunikaty = lazy(() => import("pages/Komunikaty"))
+const Zgloszenia = lazy(() => import("pages/Zgloszenia"))
+const Teren = lazy(() => import("pages/Teren/Teren"))
+const Kontakt = lazy(() => import("pages/Kontakt/Kontakt"))
+const Aktualnosci = lazy(() => import("pages/Aktualnosci/Aktualnosci"))
+const KomunikatDetails = lazy(() => import("pages/KomunikatyDetails/KomunikatDetails"))
 
  const App = () => {
    return (<>
-     <Suspense fallback={<div>Loading...</div>}>
-     <Routes>
-       <Route path='/' element={<Layout />} >
-         <Route index element={<Home />} />
-         <Route path='/movies' element={<Movies />} />
-      
-         <Route path='/movies/:movieId' element={
-           <MovieDetails />
-         } >
-           <Route path='/movies/:movieId/cast' element={<Cast />} />
-         
-           <Route path='/movies/:movieId/reviews' element={<Reviews/>} />
+     <Suspense fallback={<div>Ładowanie...</div>}>
+       <Routes>
+         <Route path='/' element={<Layout />} >
+           <Route index element={<Home />} />
+           
+           <Route path='/komunikaty' element={<Komunikaty />} />
+
+           <Route path='/aktualnosci' element={<Aktualnosci />} />
+           <Route path='/aktualnosci/:newsId' element={
+             <NewsDetailsPage />
+           } >
+           </Route>
+           
+           <Route path='/zgloszenia' element={<Zgloszenia />} />
+           
+           <Route path='/teren' element={<Teren />} />
+           <Route path='/kontakt' element={<Kontakt />} />
+
          </Route>
-   
-         </Route>
          
-             <Route path='*' element={< Navigate to="/" />} />
+         <Route path='*' element={< Navigate to="/" />} />
 
        </Routes>
-       </Suspense>
+     </Suspense>
    </>
    )
 };

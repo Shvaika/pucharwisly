@@ -1,0 +1,19 @@
+.main{
+    display: flex;
+}
+
+.article{
+    width: 80%;
+    margin: auto;
+}
+
+.backLink > button{
+    left: 2px;
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+}
+.backLink>button:hover {
+    color: white;
+    background-color: black;
+}

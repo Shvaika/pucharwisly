@@ -1,0 +1,37 @@
+.articleContainer{
+        width: 300px;
+        position: relative;
+        overflow: hidden;
+            margin: -30 20px 0;
+            padding: 15px;
+}
+.articleItem{
+    box-shadow: 0 0 30px rgba(31, 45, 61, 0.125);
+        border-radius: 5px;
+        background: #ffffff;
+        padding: 1px 20px;
+        margin: -60px 20px 0;
+        /* height: 0px; */
+        position: relative;
+}
+
+.articleImg{
+    position: relative;
+    border-radius: 5px;
+    height: 200px;
+    overflow: hidden;
+}
+
+.dateTime{
+    position: absolute;
+    background-color: #d4cdcd;
+    top: 10px;
+    padding: 8px 15px;
+    font-size: 15px;
+}
+
+.articleRef{
+    word-wrap: break-word;
+    color: #5519e1;
+    text-decoration: none;
+}
