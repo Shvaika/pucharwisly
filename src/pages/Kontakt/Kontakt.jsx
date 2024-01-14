@@ -1,5 +1,6 @@
 import React from 'react'
 import css from './Kontakt.module.css'
+import { Link } from 'react-router-dom'
 
 const Kontakt = () => {
   return (
@@ -9,13 +10,13 @@ const Kontakt = () => {
         <p>ul. Popiełuszki 1</p>
         <p>87-100 Toruń</p>
         <address>
-          <a href="mailto:biuro@kpozos.pl">biuro@kpozos.pl</a>
+          <Link to="mailto:biuro@kpozos.pl">biuro@kpozos.pl</Link>
         </address>
         <p>Kierownik zawodów: Zbigniew Mądrzyński
           <br />
-          E-mail:<a href='mailto:'></a>
+          E-mail:
           <br />
-          Tel:<a href="tel:"></a>
+          Tel:
         </p>
       </article>
     </main >

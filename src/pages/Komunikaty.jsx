@@ -1,6 +1,5 @@
 import NewsList from 'components/NewsList/NewsList';
 import React, { useState, useEffect } from 'react';
-import { useLocation } from 'react-router-dom';
 
 const Komunikaty = () => {
   const [loading, setLoading] = useState(false)
