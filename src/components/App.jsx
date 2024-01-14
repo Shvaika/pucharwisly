@@ -1,6 +1,5 @@
 import { Navigate, Route, Routes } from "react-router-dom";
 import React, { Suspense, lazy } from "react";
-import NewsDetailsPage from "pages/NewsDetailsPage/NewsDetailsPage";
 
 const Layout = lazy(() => import("pages/layout/Layout"))
 const Home = lazy(() => import("pages/Home/Home"))
@@ -9,7 +8,7 @@ const Zgloszenia = lazy(() => import("pages/Zgloszenia"))
 const Teren = lazy(() => import("pages/Teren/Teren"))
 const Kontakt = lazy(() => import("pages/Kontakt/Kontakt"))
 const Aktualnosci = lazy(() => import("pages/Aktualnosci/Aktualnosci"))
-const KomunikatDetails = lazy(() => import("pages/KomunikatyDetails/KomunikatDetails"))
+const NewsDetailsPage = lazy(() => import("pages/NewsDetailsPage/NewsDetailsPage"))
 
  const App = () => {
    return (<>

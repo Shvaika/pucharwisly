@@ -1,5 +1,4 @@
 export const extractDate = (date) => {
-    console.log('date', date)
     const year = date.slice(0, 4)
     const day = date.slice(8, 10)
     const month = toMonth(date.slice(5, 7))
@@ -33,5 +32,7 @@ const toMonth = (month) => {
             return 'Listopad'
         case '12':
             return 'Grudzień'
+        default:
+            return ''
     }
 }

@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react'
 import css from './Teren.module.css'
-import { Link } from 'react-router-dom'
 
 const Teren = () => {
   const [loading, setLoading] = useState(false)
